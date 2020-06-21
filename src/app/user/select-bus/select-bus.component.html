@@ -1,0 +1,39 @@
+<div class="overlap"></div>
+<div class="container">
+  <div class="row justify-content-center pb-5 pt-3">
+    <div class="col-md-5 block mt-3">
+      <form (ngSubmit)="SearchBus(f)" #f=ngForm>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label>Leaving from</label>
+            <select (change)="onSelectLeavingFrom($event)" name="leaving_from" required ngModel
+              class="form-control form-control-sm">
+              <option value="">Select Place</option>
+              <option *ngFor="let place of places" [value]="place.name">{{place.name}}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Going To</label>
+            <select (change)="onSelectGoingTo($event)"  name="going_to" required ngModel class="form-control form-control-sm">
+              <option value="">Select Place</option>
+              <option *ngFor="let p of destinationList" [value]="p.destination_location">{{p.destination_location}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="">Departing On</label>
+            <input type="date" required class="form-control form-control-sm" ngModel name="depart_date">
+          </div>
+
+        </div>
+        <button [disabled]="!f.valid" class="btn btn-block mt-3 btn-search btn-sm"> <i class="fas mr-2 fa-search"></i>
+          Search Buses</button>
+      </form>
+    </div>
+    <div class="col-md-5 slider mt-3 ">
+      <img src="../assets/img/redBus-coupons-offers-1586.PNG" class="img-fluid">
+    </div>
+  </div>
+</div>
